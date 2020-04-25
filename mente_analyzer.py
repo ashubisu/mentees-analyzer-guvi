@@ -69,7 +69,10 @@ for mentee_record_line in mentees_record:
     record = mentee_record_line.split(",");
     mentee_emails.append(record[5])
 
-destination_file = open("destination_files\\report.csv","w")
+import datetime
+now = datetime.datetime.now()
+now = now.strftime("%d_%m_%Y_%H_%M_%S")
+destination_file = open("destination_files\\report_"+now+".csv","w")
 destination_file.write("Source File,Sno,Name,Email,% Completed,Codekata points,Old Codekata submission count,Codekata submission count,Valid Codekata submission count,Department,Assignment Count,Quiz Count,Last Codekata Submitted date(IST),View HeatMap\n")
 for mentee_email in mentee_emails:
     for record_line in merged_records:
