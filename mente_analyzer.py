@@ -1,5 +1,5 @@
 import os
-path = '.\\source_files'
+path = './source_files'
 source_file_list = []
 # r=root, d=directories, f = files
 for r, d, f in os.walk(path):
@@ -7,7 +7,7 @@ for r, d, f in os.walk(path):
         if '.csv' in file:
             source_file_list.append(file)
 
-file_mapping_file = open("config\\file_mapping.csv","r")
+file_mapping_file = open("config/file_mapping.csv","r")
 file_mapping_dict = {}
 fisrt_line_ignored = False
 for line in file_mapping_file:
@@ -22,14 +22,14 @@ file_mapping_file.close()
 
 for actual_name,new_name in file_mapping_dict.items():
     try:
-        os.rename("source_files\\"+actual_name+".csv","source_files\\"+new_name+".csv")
+        os.rename("source_files/"+actual_name+".csv","source_files/"+new_name+".csv")
     except FileNotFoundError:
         print("Files Already Renamed")
 #print(file_mapping_dict)
 
 # file merger
 
-path = '.\\source_files'
+path = './source_files'
 source_file_list = []
 # r=root, d=directories, f = files
 for r, d, f in os.walk(path):
@@ -37,10 +37,10 @@ for r, d, f in os.walk(path):
         if '.csv' in file:
             source_file_list.append(file)
 
-merged_file = open("intermediate_files\\merged.csv","w")
+merged_file = open("intermediate_files/merged.csv","w")
 for file_name in source_file_list:
     print(file_name)
-    current_file = open("source_files\\"+file_name,"r",encoding="utf8")
+    current_file = open("source_files/"+file_name,"r",encoding="utf8")
     fisrt_line_ignored = False
     
     for line in current_file:
@@ -56,11 +56,11 @@ for file_name in source_file_list:
 merged_file.close()
 
 
-merged_source_file = open("intermediate_files\\merged.csv",'r')
+merged_source_file = open("intermediate_files/merged.csv",'r')
 merged_records = merged_source_file.readlines();
 merged_source_file.close()
 
-mentees_details_file = open("config\\mentees.csv")
+mentees_details_file = open("config/mentees.csv")
 mentees_record = mentees_details_file.readlines();
 mentees_details_file.close()
 
@@ -72,7 +72,7 @@ for mentee_record_line in mentees_record:
 import datetime
 now = datetime.datetime.now()
 now = now.strftime("%d_%m_%Y_%H_%M_%S")
-destination_file = open("destination_files\\report_"+now+".csv","w")
+destination_file = open("destination_files/report_"+now+".csv","w")
 destination_file.write("Source File,Sno,Name,Email,% Completed,Codekata points,Old Codekata submission count,Codekata submission count,Valid Codekata submission count,Department,Assignment Count,Quiz Count,Last Codekata Submitted date(IST),View HeatMap\n")
 for mentee_email in mentee_emails:
 
