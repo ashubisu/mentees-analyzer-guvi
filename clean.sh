@@ -1,2 +1,2 @@
-rm source_files\*.csv
-rm intermediate_files\*.csv
+rm source_files/*.csv
+rm intermediate_files/*.csv
